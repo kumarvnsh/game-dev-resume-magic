@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        game: {
+          '50': '#f5f7fa',
+          '100': '#ebeef3',
+          '200': '#d6dde7',
+          '300': '#b0bdd1',
+          '400': '#8598b7',
+          '500': '#657ca0',
+          '600': '#516386',
+          '700': '#41506d',
+          '800': '#39455c',
+          '900': '#343c4e',
+          '950': '#1a1f2c',
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +98,51 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' }
+        },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' }
+        },
+        'slide-up': {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' }
+        },
+        'slide-down': {
+          '0%': { transform: 'translateY(-20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' }
+        },
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' }
+        },
+        'slide-in-left': {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' }
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' }
+        },
+        'blur-in': {
+          '0%': { filter: 'blur(10px)', opacity: '0' },
+          '100%': { filter: 'blur(0)', opacity: '1' }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'fade-out': 'fade-out 0.5s ease-out forwards',
+        'slide-up': 'slide-up 0.7s ease-out forwards',
+        'slide-down': 'slide-down 0.7s ease-out forwards',
+        'slide-in-right': 'slide-in-right 0.7s ease-out forwards',
+        'slide-in-left': 'slide-in-left 0.7s ease-out forwards',
+        'float': 'float 5s ease-in-out infinite',
+        'blur-in': 'blur-in 0.7s ease-out forwards',
 			}
 		}
 	},
