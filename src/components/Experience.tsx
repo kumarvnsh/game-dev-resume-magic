@@ -1,6 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Crosshair } from 'lucide-react';
 
 interface ExperienceItem {
   title: string;
@@ -12,7 +12,7 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     title: "Unity Developer",
-    company: "GreyBlue Ventures (Renamed as Saathi)",
+    company: "Saathi",
     period: "Oct 2023 - Present",
     description: [
       "Specialized in developing both hyper-casual and hybrid casual games, as well as AR and VR applications.",
@@ -75,24 +75,27 @@ const Experience = () => {
     <section 
       id="experience" 
       ref={sectionRef}
-      className="py-20 opacity-0"
+      className="py-20 opacity-0 bg-gradient-to-b from-game-900/90 to-game-950/70"
     >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col gap-2 mb-12">
-            <span className="text-sm font-medium text-primary">MY JOURNEY</span>
-            <h2 className="text-3xl font-bold">Professional Experience</h2>
+            <span className="text-sm font-medium uppercase tracking-widest text-primary inline-flex items-center gap-2">
+              <span className="bg-primary w-4 h-0.5"></span>
+              COMBAT RECORD
+            </span>
+            <h2 className="text-3xl font-bold uppercase tracking-wider text-gray-100">Field Operations</h2>
           </div>
           
           <div className="flex flex-col md:flex-row gap-8">
-            <div className="flex overflow-x-auto md:flex-col md:min-w-[200px] border-b md:border-b-0 md:border-l">
+            <div className="flex overflow-x-auto md:flex-col md:min-w-[200px] border-b md:border-b-0 md:border-l border-game-400/30">
               {experiences.map((exp, index) => (
                 <button
                   key={index}
                   className={`px-4 py-3 text-left whitespace-nowrap md:whitespace-normal transition-all duration-300 ${
                     activeTab === index 
-                      ? 'text-primary border-primary md:border-l-2 md:-ml-[1px] md:border-b-0 border-b-2' 
-                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                      ? 'text-primary border-primary md:border-l-2 md:-ml-[1px] md:border-b-0 border-b-2 bg-game-900/50' 
+                      : 'text-muted-foreground hover:text-foreground hover:bg-game-800/30'
                   }`}
                   onClick={() => setActiveTab(index)}
                 >
@@ -101,9 +104,9 @@ const Experience = () => {
               ))}
             </div>
             
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-bold flex flex-wrap items-start gap-x-2">
+            <div className="flex-1 min-w-0 font-mono">
+              <div className="flex flex-col gap-2 p-4 border border-game-400/20 bg-game-900/30 backdrop-blur-sm">
+                <h3 className="text-xl font-bold flex flex-wrap items-start gap-x-2 uppercase tracking-wide">
                   <span>{experiences[activeTab].title}</span>
                   <span className="text-primary">@ {experiences[activeTab].company}</span>
                 </h3>
@@ -116,7 +119,7 @@ const Experience = () => {
                 <ul className="space-y-4">
                   {experiences[activeTab].description.map((item, idx) => (
                     <li key={idx} className="flex gap-2 text-muted-foreground">
-                      <span className="text-primary">▹</span>
+                      <Crosshair className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
