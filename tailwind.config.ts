@@ -75,6 +75,18 @@ export default {
           '800': '#39455c',
           '900': '#343c4e',
           '950': '#1a1f2c',
+        },
+        cod: {
+          'black': '#101010',
+          'darkgray': '#1E1E1E',
+          'gray': '#333333',
+          'green': '#6EAE41',
+          'orange': '#D8651C',
+          'red': '#A12B28',
+          'tan': '#B5A276',
+          'yellow': '#F0C808',
+          'lightgray': '#8A898C',
+          'blue': '#2A93D5',
         }
 			},
 			borderRadius: {
@@ -130,6 +142,13 @@ export default {
         'blur-in': {
           '0%': { filter: 'blur(10px)', opacity: '0' },
           '100%': { filter: 'blur(0)', opacity: '1' }
+        },
+        'glitch': {
+          '0%, 100%': { transform: 'translate(0)' },
+          '20%': { transform: 'translate(-5px, 5px)' },
+          '40%': { transform: 'translate(-5px, -5px)' },
+          '60%': { transform: 'translate(5px, 5px)' },
+          '80%': { transform: 'translate(5px, -5px)' }
         }
 			},
 			animation: {
@@ -143,6 +162,7 @@ export default {
         'slide-in-left': 'slide-in-left 0.7s ease-out forwards',
         'float': 'float 5s ease-in-out infinite',
         'blur-in': 'blur-in 0.7s ease-out forwards',
+        'glitch': 'glitch 0.8s ease-in-out infinite',
 			}
 		}
 	},

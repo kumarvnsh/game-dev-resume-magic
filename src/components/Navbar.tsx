@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Gamepad2 } from 'lucide-react';
+import { Menu, X, Gamepad2, Target, Crosshair } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -36,7 +36,7 @@ const Navbar = () => {
     <header
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/80 backdrop-blur-md shadow-md py-3'
+          ? 'bg-cod-black/90 backdrop-blur-md border-b border-cod-gray/50 py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -45,8 +45,8 @@ const Navbar = () => {
           to="/" 
           className="flex items-center gap-2 font-bold text-xl group"
         >
-          <Gamepad2 className="text-primary transition-transform duration-500 group-hover:rotate-12" />
-          <span className="transition-colors duration-300 hover:text-primary">VNSH KUMAR</span>
+          <Target className="text-primary transition-transform duration-500 group-hover:rotate-12" />
+          <span className="font-mono tracking-wider transition-colors duration-300 hover:text-primary">VNSH KUMAR</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -55,11 +55,14 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative text-sm font-medium transition-colors hover:text-primary ${
+              className={`relative text-sm font-mono tracking-wider transition-colors hover:text-primary flex items-center ${
                 location.pathname === link.path ? 'text-primary' : ''
-              } after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full`}
+              }`}
             >
-              {link.name}
+              {location.pathname === link.path && (
+                <Crosshair className="h-3 w-3 mr-1 text-primary" />
+              )}
+              {link.name.toUpperCase()}
             </Link>
           ))}
         </nav>
@@ -76,7 +79,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`fixed inset-0 z-40 bg-background/90 backdrop-blur-lg transform md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 z-40 bg-cod-black/95 backdrop-blur-lg transform md:hidden transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -85,12 +88,15 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-xl font-medium transition-colors hover:text-primary ${
+              className={`text-xl font-mono tracking-wider transition-colors hover:text-primary flex items-center ${
                 location.pathname === link.path ? 'text-primary' : ''
               }`}
               onClick={() => setIsOpen(false)}
             >
-              {link.name}
+              {location.pathname === link.path && (
+                <Crosshair className="h-4 w-4 mr-2 text-primary" />
+              )}
+              {link.name.toUpperCase()}
             </Link>
           ))}
         </div>
